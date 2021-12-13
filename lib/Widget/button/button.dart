@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vants/Widget/button/button_model.dart';
-import 'package:vants/Widget/button/button_style.dart';
-import 'package:vants/theme/theme.dart';
+import 'package:vants_ui/Widget/button/button_model.dart';
+import 'package:vants_ui/Widget/button/button_style.dart';
+import 'package:vants_ui/theme/theme.dart';
 
 class VButton extends StatelessWidget {
   final VoidCallback? onTap;
