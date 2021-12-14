@@ -1,16 +1,24 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vants_ui/Widget/button/button_model.dart';
 import 'package:vants_ui/Widget/button/button_style.dart';
-import 'package:vants_ui/theme/theme.dart';
 
 class VButton extends StatelessWidget {
+  /// 点击事件
   final VoidCallback? onTap;
 
+  /// 按钮支持  primary、success、info，warning、danger 五种类型，默认为 primary
   final VbuttonType type;
+
+  ///
   final Widget? child;
+
+  /// 文本
   final Text? text;
+
+  /// 按钮在默认情况下为行内块级元素，通过 block 属性可以将按钮的元素类型设置为块级元素。
   final bool block;
+
+  /// 禁用状态
   final bool disabled;
 
   /// 通过 plain 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为白色。
@@ -25,22 +33,31 @@ class VButton extends StatelessWidget {
 
   final VButtonSize size;
 
+  /// icon
   final Icon? icon;
-  const VButton(
-      {Key? key,
-      this.onTap,
-      this.child,
-      this.type = VbuttonType.primary,
-      this.text,
-      this.block = false,
-      this.plain = false,
-      this.disabled = false,
-      this.hairline = false,
-      this.loading = false,
-      this.shape = VButtonShape.little,
-      this.size = VButtonSize.normal,
-      this.icon})
-      : super(key: key);
+
+  /// color
+  final Color? color;
+
+  ///
+  // final LinearGradient(colors: [Colors.blue, Colors.red])
+
+  const VButton({
+    Key? key,
+    this.onTap,
+    this.child,
+    this.type = VbuttonType.primary,
+    this.text,
+    this.block = false,
+    this.plain = false,
+    this.disabled = false,
+    this.hairline = false,
+    this.loading = false,
+    this.shape = VButtonShape.little,
+    this.size = VButtonSize.normal,
+    this.icon,
+    this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +68,7 @@ class VButton extends StatelessWidget {
       shap: shape,
       size: size,
       loading: loading,
+      color: color,
     );
 
     // Widget widget = child ?? text;

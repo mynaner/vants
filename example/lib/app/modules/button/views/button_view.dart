@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:vants/Widget/button/button.dart';
-import 'package:vants/Widget/button/button_model.dart';
+import 'package:vants_ui/vants.dart';
 
 import '../controllers/button_controller.dart';
 
@@ -264,6 +263,25 @@ class ButtonView extends GetView<ButtonController> {
               shape: VButtonShape.round,
               onTap: () {},
             ),
+            Text("自定义颜色", style: TextStyle(color: Colors.black45)),
+            Row(
+              children: [
+                VButton(
+                  text: Text("信息按钮"),
+                  plain: true,
+                  color: Colors.purple,
+                  onTap: () {},
+                ),
+                SizedBox(width: 10),
+                VButton(
+                  text: Text("登 陆"),
+                  type: VbuttonType.info,
+                  color: Colors.purple,
+                  // shape: VButtonShape.round,
+                  onTap: () {},
+                ),
+              ],
+            )
           ],
         ),
       ),

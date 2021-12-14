@@ -1,64 +1,66 @@
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vants_ui/Widget/button/button_model.dart';
 import 'package:vants_ui/theme/theme.dart';
 
 class VButtonStyle {
-  VbuttonType type;
-  bool plain;
+  final VbuttonType type;
+  final bool plain;
   late _ButtonStyle _style;
-  bool hairline;
-  VButtonShape shap;
-  bool loading;
-  VButtonSize size;
+  final bool hairline;
+  final VButtonShape shap;
+  final bool loading;
+  final VButtonSize size;
   late _ButtonSize _size;
-  VButtonStyle(
-      {required this.type,
-      required this.plain,
-      required this.hairline,
-      required this.shap,
-      required this.size,
-      required this.loading}) {
+  final Color? color;
+  VButtonStyle({
+    required this.type,
+    required this.plain,
+    required this.hairline,
+    required this.shap,
+    required this.size,
+    required this.loading,
+    this.color,
+  }) {
     switch (type) {
       case VbuttonType.success:
         _style = _ButtonStyle(
-          backgroundColor: plain ? VTheme.white : VTheme.successColor,
+          backgroundColor: plain ? VTheme.white : color ?? VTheme.successColor,
           color: VTheme.white,
-          border:
-              BorderSide(width: hairline ? 0.5 : 1, color: VTheme.successColor),
+          border: BorderSide(
+              width: hairline ? 0.5 : 1, color: color ?? VTheme.successColor),
         );
         break;
       case VbuttonType.primary:
         _style = _ButtonStyle(
-          backgroundColor: plain ? VTheme.white : VTheme.primaryColor,
+          backgroundColor: plain ? VTheme.white : color ?? VTheme.primaryColor,
           color: VTheme.white,
-          border:
-              BorderSide(width: hairline ? 0.5 : 1, color: VTheme.primaryColor),
+          border: BorderSide(
+              width: hairline ? 0.5 : 1, color: color ?? VTheme.primaryColor),
         );
         break;
       case VbuttonType.info:
         _style = _ButtonStyle(
           backgroundColor: VTheme.white,
           color: VTheme.gray8,
-          border: BorderSide(width: hairline ? 0.5 : 1, color: VTheme.gray4),
+          border: BorderSide(
+              width: hairline ? 0.5 : 1, color: color ?? VTheme.gray4),
         );
         break;
       case VbuttonType.danger:
         _style = _ButtonStyle(
-          backgroundColor: plain ? VTheme.white : VTheme.dangerColor,
+          backgroundColor: plain ? VTheme.white : color ?? VTheme.dangerColor,
           color: VTheme.white,
-          border:
-              BorderSide(width: hairline ? 0.5 : 1, color: VTheme.dangerColor),
+          border: BorderSide(
+              width: hairline ? 0.5 : 1, color: color ?? VTheme.dangerColor),
         );
         break;
       case VbuttonType.warning:
         _style = _ButtonStyle(
-          backgroundColor: plain ? VTheme.white : VTheme.warningColor,
+          backgroundColor: plain ? VTheme.white : color ?? VTheme.warningColor,
           color: VTheme.white,
-          border:
-              BorderSide(width: hairline ? 0.5 : 1, color: VTheme.warningColor),
+          border: BorderSide(
+              width: hairline ? 0.5 : 1, color: color ?? VTheme.warningColor),
         );
         break;
       default:
@@ -172,16 +174,15 @@ class VButtonStyle {
         return (plain ? _style.border.color : _style.color).withOpacity(.8);
       }
       if (type == VbuttonType.info) {
-        return _style.color;
+        return color ?? _style.color;
       }
 
-      return plain ? _style.border.color : _style.color;
+      return plain ? (color ?? _style.border.color) : _style.color;
     });
   }
 
   Widget get loadingStatus {
-    return CupertinoActivityIndicator(
-      color: plain ? _style.border.color : _style.color,
+    return const CupertinoActivityIndicator(
       radius: 9,
     );
     // return const CupertinoActivityIndicator(
