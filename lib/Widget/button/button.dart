@@ -39,9 +39,6 @@ class VButton extends StatelessWidget {
   /// color
   final Color? color;
 
-  ///
-  // final LinearGradient(colors: [Colors.blue, Colors.red])
-
   const VButton({
     Key? key,
     this.onTap,
@@ -82,13 +79,22 @@ class VButton extends StatelessWidget {
       textStyle: style.textStyle,
       foregroundColor: style.foregroundColor,
       padding: style.padding,
-      //设置按钮的大小
       minimumSize: style.minimumSize,
       alignment: Alignment.center,
     );
+
     Widget widget = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [icon ?? Container(), child ?? text ?? Container()],
+      children: [
+        icon != null
+            ? Icon(
+                icon?.icon,
+                size: icon?.size ?? 20,
+                color: icon?.color,
+              )
+            : Container(),
+        child ?? text ?? Container()
+      ],
     );
     if (loading) {
       widget = Row(

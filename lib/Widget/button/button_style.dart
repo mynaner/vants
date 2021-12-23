@@ -182,12 +182,14 @@ class VButtonStyle {
   }
 
   Widget get loadingStatus {
-    return const CupertinoActivityIndicator(
-      radius: 9,
+    return Container(
+      width: 15,
+      height: 15,
+      child: CircularProgressIndicator.adaptive(
+        strokeWidth: 1,
+        valueColor: AlwaysStoppedAnimation<Color>(_style.color),
+      ),
     );
-    // return const CupertinoActivityIndicator(
-    //   color: Colors.white,
-    // );
   }
 
   // TextStyle get textStyle {

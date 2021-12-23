@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -9,7 +11,7 @@ class ButtonView extends GetView<ButtonController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Button')),
+      // appBar: AppBar(title: Text('Button')),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -17,6 +19,46 @@ class ButtonView extends GetView<ButtonController> {
             Text("按钮类型", style: TextStyle(color: Colors.black45)),
             Wrap(
               children: [
+                // Container(
+                //   margin: EdgeInsets.symmetric(vertical: 2),
+                //   height: 42,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(999),
+                //     gradient: LinearGradient(colors: [Colors.blue, Colors.red]),
+                //   ),
+                //   child: VButton(
+                //     text: Text("主要按钮"),
+                //     type: VbuttonType.primary,
+                //     color: Colors.transparent,
+                //     shape: VButtonShape.round,
+                //     onTap: () {},
+                //   ),
+                // ),
+                // Container(
+                //   margin: EdgeInsets.symmetric(vertical: 2),
+                //   height: 42,
+                //   decoration: BoxDecoration(
+                //     borderRadius: BorderRadius.circular(999),
+                //     gradient: LinearGradient(colors: [Colors.blue, Colors.red]),
+                //   ),
+                //   padding: EdgeInsets.all(1),
+                //   child: VButton(
+                //     text: Text("主要",
+                //         style: TextStyle(
+                //           foreground: Paint()
+                //             ..shader = LinearGradient(
+                //                 colors: [Colors.blue, Colors.red]).createShader(
+                //               Rect.fromLTWH(0, 0, Get.width, Get.height),
+                //             ),
+                //         )),
+                //     type: VbuttonType.primary,
+                //     plain: true,
+                //     color: Colors.transparent,
+                //     shape: VButtonShape.round,
+                //     onTap: () {},
+                //   ),
+                // ),
+                // SizedBox(width: 10),
                 VButton(
                   text: Text("主要按钮"),
                   type: VbuttonType.primary,
@@ -54,24 +96,17 @@ class ButtonView extends GetView<ButtonController> {
               child: Wrap(
                 children: [
                   VButton(
-                    text: Text("信息按钮"),
+                    text: Text("朴素按钮"),
                     type: VbuttonType.primary,
                     plain: true,
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("警告按钮"),
+                    text: Text("朴素按钮"),
                     type: VbuttonType.warning,
                     onTap: () {},
                     plain: true,
-                  ),
-                  SizedBox(width: 10),
-                  VButton(
-                    text: Text("信息按钮"),
-                    type: VbuttonType.info,
-                    plain: true,
-                    onTap: () {},
                   ),
                 ],
               ),
@@ -81,7 +116,7 @@ class ButtonView extends GetView<ButtonController> {
               child: Wrap(
                 children: [
                   VButton(
-                    text: Text("信息按钮"),
+                    text: Text("细边框按钮"),
                     type: VbuttonType.primary,
                     plain: true,
                     hairline: true,
@@ -89,17 +124,9 @@ class ButtonView extends GetView<ButtonController> {
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("警告按钮"),
+                    text: Text("细边框按钮"),
                     hairline: true,
                     type: VbuttonType.warning,
-                    onTap: () {},
-                    plain: true,
-                  ),
-                  SizedBox(width: 10),
-                  VButton(
-                    text: Text("警告按钮"),
-                    hairline: true,
-                    type: VbuttonType.info,
                     onTap: () {},
                     plain: true,
                   ),
@@ -111,24 +138,22 @@ class ButtonView extends GetView<ButtonController> {
               child: Wrap(
                 children: [
                   VButton(
-                    text: Text("信息按钮"),
+                    text: Text("禁用状态"),
                     type: VbuttonType.primary,
                     disabled: true,
-                    hairline: true,
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("警告按钮"),
-                    hairline: true,
+                    text: Text("禁用状态"),
                     disabled: true,
+                    plain: true,
                     type: VbuttonType.warning,
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("警告按钮"),
-                    hairline: true,
+                    text: Text("禁用状态"),
                     disabled: true,
                     type: VbuttonType.info,
                     onTap: () {},
@@ -166,16 +191,24 @@ class ButtonView extends GetView<ButtonController> {
               child: Wrap(
                 children: [
                   VButton(
-                    text: Text("按钮形状"),
+                    shape: VButtonShape.square,
+                    type: VbuttonType.warning,
+                    text: Text("方形按钮"),
+                    onTap: () {},
+                  ),
+                  SizedBox(width: 10),
+                  VButton(
+                    text: Text("圆形按钮"),
                     type: VbuttonType.primary,
                     shape: VButtonShape.round,
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    shape: VButtonShape.square,
-                    type: VbuttonType.warning,
-                    text: Text("按钮形状"),
+                    text: Text("圆形按钮"),
+                    type: VbuttonType.primary,
+                    shape: VButtonShape.round,
+                    plain: true,
                     onTap: () {},
                   ),
                 ],
@@ -188,14 +221,14 @@ class ButtonView extends GetView<ButtonController> {
                   VButton(
                     type: VbuttonType.primary,
                     shape: VButtonShape.round,
-                    icon: Icon(Icons.add, size: 20),
+                    icon: Icon(Icons.add),
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
                     shape: VButtonShape.square,
                     type: VbuttonType.warning,
-                    icon: Icon(Icons.add, size: 20),
+                    icon: Icon(Icons.add),
                     text: Text("按钮形状"),
                     onTap: () {},
                   ),
@@ -203,7 +236,7 @@ class ButtonView extends GetView<ButtonController> {
                   VButton(
                     shape: VButtonShape.square,
                     type: VbuttonType.warning,
-                    icon: Icon(Icons.add, size: 20),
+                    icon: Icon(Icons.add),
                     plain: true,
                     text: Text("按钮形状"),
                     onTap: () {},
@@ -216,14 +249,14 @@ class ButtonView extends GetView<ButtonController> {
               child: Wrap(
                 children: [
                   VButton(
-                    text: Text("主要按钮"),
+                    text: Text("按钮大小"),
                     type: VbuttonType.primary,
                     size: VButtonSize.large,
                     onTap: () {},
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("成功按钮"),
+                    text: Text("按钮大小"),
                     type: VbuttonType.success,
                     size: VButtonSize.normal,
                     shape: VButtonShape.round,
@@ -231,7 +264,7 @@ class ButtonView extends GetView<ButtonController> {
                   ),
                   SizedBox(width: 10),
                   VButton(
-                    text: Text("危险按钮"),
+                    text: Text("按钮大小"),
                     type: VbuttonType.danger,
                     size: VButtonSize.small,
                     onTap: () {},
@@ -239,7 +272,7 @@ class ButtonView extends GetView<ButtonController> {
                   SizedBox(width: 10),
                   Container(
                     child: VButton(
-                      text: Text("信息按钮"),
+                      text: Text("按钮大小"),
                       type: VbuttonType.info,
                       size: VButtonSize.mini,
                       onTap: () {},
@@ -250,14 +283,14 @@ class ButtonView extends GetView<ButtonController> {
             ),
             Text("块级元素", style: TextStyle(color: Colors.black45)),
             VButton(
-              text: Text("信息按钮"),
+              text: Text("块级元素"),
               type: VbuttonType.info,
               size: VButtonSize.normal,
               block: true,
               onTap: () {},
             ),
             VButton(
-              text: Text("登 陆"),
+              text: Text("块级元素"),
               type: VbuttonType.primary,
               block: true,
               shape: VButtonShape.round,
@@ -267,17 +300,24 @@ class ButtonView extends GetView<ButtonController> {
             Row(
               children: [
                 VButton(
-                  text: Text("信息按钮"),
+                  text: Text("purple plain"),
                   plain: true,
                   color: Colors.purple,
                   onTap: () {},
                 ),
                 SizedBox(width: 10),
                 VButton(
-                  text: Text("登 陆"),
+                  text: Text("info info"),
                   type: VbuttonType.info,
                   color: Colors.purple,
                   // shape: VButtonShape.round,
+                  onTap: () {},
+                ),
+                SizedBox(width: 10),
+                VButton(
+                  text: Text("primary"),
+                  type: VbuttonType.primary,
+                  color: Colors.purple,
                   onTap: () {},
                 ),
               ],
